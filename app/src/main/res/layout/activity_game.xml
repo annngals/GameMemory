@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameActivity"
-    android:id="@+id/mainlayout">
+    android:id="@+id/mainlayout"
+    android:orientation="horizontal">
 
 </LinearLayout>

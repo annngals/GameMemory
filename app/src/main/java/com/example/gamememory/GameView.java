@@ -95,7 +95,7 @@ public class GameView extends View {
         this.n = size;
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         bitmapSource = BitmapFactory.decodeResource(getResources(), R.drawable.image_part_055);
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_001));
+        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_001)); //TODO: убрать повторения
         store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_002));
         store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_003));
         store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_004));
@@ -150,7 +150,7 @@ public class GameView extends View {
         store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_053));
         store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_054));
 
-        Random r = new Random();
+        Random r = new Random(); //TODO: переименовать переменные; вынести в функцию
         int dx = width / n, dy = height / n;
         int tek = 0;
         int temp = 0;
@@ -160,7 +160,6 @@ public class GameView extends View {
                 if (temp == 0){
                     tek = k;
                     cards.add(new Card(store.get(k), bitmapSource, 0, 0, dx, dy));
-
                 }
                 else {
                     cards.add(new Card(store.get(tek), bitmapSource, 0, 0, dx, dy));
@@ -176,7 +175,7 @@ public class GameView extends View {
                 cards.get(i * n + j).x = dx * i;
                 cards.get(i * n + j).y = dy * j;
             }
-        }
+        } //
     }
 
     @Override
@@ -224,7 +223,7 @@ public class GameView extends View {
     }
 
     public void checkOpenCardsEqual(){
-        Card b1 = null;
+        Card b1 = null; // TODO: переименовать переменные
         Card b2 = null;
         for (int i = 0; i < cards.size(); i++){
             if (b1 == null && cards.get(i).isOpen){
@@ -287,7 +286,7 @@ public class GameView extends View {
     }
 
     public void newGame() {
-        Random r = new Random();
+        Random r = new Random(); //TODO: функция повторяется
         int dx = width / n, dy = height / n;
         int tek = 0;
         int temp = 0;

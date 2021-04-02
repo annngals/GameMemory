@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("test", String.valueOf(selectvalue));
                 }
             });
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { //TODO: убрать пустой онклик
                 public void onClick(DialogInterface dialog, int whichButton) {
 
                 }
