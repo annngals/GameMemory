@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">GameMemory</string>
+    <string name="custom">custom</string>
+    <string name="choose_size">Выберите размер игрового поля</string>
+    <string name="img_path0">\@drawable/image_part_0</string>
+    <string name="img_path00">\@drawable/image_part_00</string>
+    <string name="end">\"Конец игры \"</string>
+    <string name="newgame">Если хотите сыграть ещё нажмите: \"сыграть ещё\".\nДля выхода в меню нажмите:\n\"в главное меню\".</string>
+    <string name="playmore">Сыграть ещё</string>
+    <string name="mainmenu">В главное меню</string>
+    <string name="size">size</string>
 </resources>

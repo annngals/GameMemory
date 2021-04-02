@@ -1,19 +1,11 @@
 package com.example.gamememory;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.widget.LinearLayout;
 
-import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -26,7 +18,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         Bundle arguments = getIntent().getExtras();
-        int size = (int) arguments.get("size");
+        int size = (int) arguments.get(getString(R.string.size));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);

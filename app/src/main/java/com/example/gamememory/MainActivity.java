@@ -3,19 +3,14 @@ package com.example.gamememory;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public void ButtonSettings(View view)
     {
         CustomDialogFragment dialog = new CustomDialogFragment();
-        dialog.show(getSupportFragmentManager(), "custom");
+        dialog.show(getSupportFragmentManager(), getString(R.string.custom));
     }
 
     public static class CustomDialogFragment extends DialogFragment {
@@ -60,18 +55,13 @@ public class MainActivity extends AppCompatActivity {
             }
             String[] array = arrayList.toArray(new String[arrayList.size()]);
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("Выберите размер игрового поля");
+            builder.setTitle(R.string.choose_size);
             builder.setSingleChoiceItems(array, selectvalue, new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     selectvalue = which;
                     Log.i("test", String.valueOf(selectvalue));
-                }
-            });
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { //TODO: убрать пустой онклик
-                public void onClick(DialogInterface dialog, int whichButton) {
-
                 }
             });
             return builder.create();

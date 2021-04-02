@@ -2,30 +2,17 @@ package com.example.gamememory;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -95,87 +82,17 @@ public class GameView extends View {
         this.n = size;
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         bitmapSource = BitmapFactory.decodeResource(getResources(), R.drawable.image_part_055);
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_001)); //TODO: убрать повторения
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_002));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_003));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_004));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_005));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_006));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_007));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_008));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_009));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_010));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_011));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_012));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_013));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_014));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_015));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_016));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_017));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_018));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_019));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_020));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_021));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_022));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_023));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_024));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_025));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_026));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_027));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_028));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_029));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_030));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_031));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_032));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_033));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_034));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_035));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_036));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_037));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_038));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_039));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_040));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_041));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_042));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_043));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_044));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_045));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_046));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_047));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_048));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_049));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_050));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_051));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_052));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_053));
-        store.add(BitmapFactory.decodeResource(getResources(), R.drawable.image_part_054));
-
-        Random r = new Random(); //TODO: переименовать переменные; вынести в функцию
-        int dx = width / n, dy = height / n;
-        int tek = 0;
-        int temp = 0;
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j < n; j++){
-                int k = r.nextInt(store.size());
-                if (temp == 0){
-                    tek = k;
-                    cards.add(new Card(store.get(k), bitmapSource, 0, 0, dx, dy));
-                }
-                else {
-                    cards.add(new Card(store.get(tek), bitmapSource, 0, 0, dx, dy));
-                    temp = -1;
-                }
-                temp++;
+        for (int i = 1; i < 55; i++) {
+            String url;
+            if (i<10) {
+                url = getContext().getString(R.string.img_path00)+ String.valueOf(i);
+            } else {
+                url = getContext().getString(R.string.img_path0)+ String.valueOf(i);
             }
+            int imageResource = getResources().getIdentifier(url, null, context.getPackageName());
+            store.add(BitmapFactory.decodeResource(getResources(),imageResource));
         }
-        Collections.shuffle(cards);
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j < n; j++){
-                int k = r.nextInt(store.size());
-                cards.get(i * n + j).x = dx * i;
-                cards.get(i * n + j).y = dy * j;
-            }
-        } //
+        addCards();
     }
 
     @Override
@@ -223,19 +140,19 @@ public class GameView extends View {
     }
 
     public void checkOpenCardsEqual(){
-        Card b1 = null; // TODO: переименовать переменные
-        Card b2 = null;
+        Card card1 = null; // TODO: переименовать переменные
+        Card card2 = null;
         for (int i = 0; i < cards.size(); i++){
-            if (b1 == null && cards.get(i).isOpen){
-                b1 = cards.get(i);
+            if (card1 == null && cards.get(i).isOpen){
+                card1 = cards.get(i);
             }
-            else if (b2 == null && cards.get(i).isOpen){
-                b2 = cards.get(i);
+            else if (card2 == null && cards.get(i).isOpen){
+                card2 = cards.get(i);
             }
         }
-        if (equals(b1.btm_Open,b2.btm_Open)){
-            cards.remove(b1);
-            cards.remove(b2);
+        if (equals(card1.btm_Open,card2.btm_Open)){
+            cards.remove(card1);
+            cards.remove(card2);
         }
     }
 
@@ -258,15 +175,15 @@ public class GameView extends View {
             checkOpenCardsEqual();
             if (cards.size() == 0){
                 AlertDialog show = new AlertDialog.Builder(context)
-                        .setTitle("Конец игры ")
-                        .setMessage("Если хотите сыграть ещё нажмите: \"сыграть ещё\".\nДля выхода в меню нажмите:\n\"в главное меню\".")
+                        .setTitle(R.string.end)
+                        .setMessage(R.string.newgame)
                         .setCancelable(false)
-                        .setPositiveButton("Сыграть ещё", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(R.string.playmore, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 newGame();
                             }
-                        }).setNegativeButton("В главное меню", new DialogInterface.OnClickListener() {
+                        }).setNegativeButton(R.string.mainmenu, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(context, MainActivity.class);
@@ -286,7 +203,12 @@ public class GameView extends View {
     }
 
     public void newGame() {
-        Random r = new Random(); //TODO: функция повторяется
+        addCards();
+        invalidate();
+    }
+
+    public void addCards() {
+        Random r = new Random();
         int dx = width / n, dy = height / n;
         int tek = 0;
         int temp = 0;
@@ -313,7 +235,6 @@ public class GameView extends View {
                 cards.get(i * n + j).y = dy * j;
             }
         }
-        invalidate();
     }
 
     public boolean equals(Bitmap bitmap1, Bitmap bitmap2) {
